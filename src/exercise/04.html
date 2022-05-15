@@ -6,16 +6,40 @@
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
+    // const messagePropTypes = {
+    //   subject(props, propName, componentName) {
+    //     if (typeof props[propName] !== 'string') {
+    //       return new Error('Invalid prop type')
+    //     }
+    //   },
+    //   greetings(props, propName, componentName) {
+    //     if (typeof props[propName] !== 'string') {
+    //       return new Error('Invalid prop type')
+    //     }
+    //   },
+    // }
 
+    const Message = ({subject, greetings}) => (
+      <div className="message">
+        {greetings}, {subject}
+      </div>
+    )
+    Message.propTypes = {
+      subject: PropTypes.string,
+      greetings: PropTypes.string.isRequired,
+    }
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
     const element = (
-      <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
-      </div>
+      <React.Fragment>
+        <Message subject={890} />
+        <Message subject="Michael" greetings="Bonjour" />
+        <Message subject="kdjfoij" greetings="Hola" />
+      </React.Fragment>
     )
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!

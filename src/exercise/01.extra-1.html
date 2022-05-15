@@ -22,8 +22,8 @@
   <script type="module">
     const $root = document.createElement('div')
     const $div = document.createElement('div')
-    const $body =document.body;
-    $root.setAttribute('id', 'root');
+    const $body = document.getElementsByTagName('body')
+    $root.id = 'root'
     $div.className = 'container'
     $div.textContent = 'Hello World'
     $root.append($div)
